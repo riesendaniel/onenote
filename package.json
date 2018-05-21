@@ -1,0 +1,19 @@
+{
+  "name": "onenote",
+  "version": "1.0.0",
+  "description": "Static webserver",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riesendaniel/onenote.git"
+  },
+  "author": "Daniel Riesen",
+  "license": "MIT",
+  "homepage": "https://github.com/riesendaniel/onenote",
+  "dependencies": {
+    "serve": "^6.1.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

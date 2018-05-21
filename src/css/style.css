@@ -1,0 +1,77 @@
+@import "normalize.css";
+
+body{
+    font-family: 'Calibri';
+}
+.myForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 3px;
+    padding: 1em;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+.input-group {
+    display: flex;
+    justify-content: center;
+}
+.input-group > label {
+    margin-right: 1em;
+    padding: .5em 0;
+}
+.myForm input,
+.myForm select {
+    flex: 6;
+    padding: .5em;
+    margin-bottom: 1em;
+}
+.myForm button, button {
+    padding: 0.5em;
+    background: cornflowerblue;
+    color: white;
+}
+.myForm fieldset {
+    border: 0;
+}
+
+#p1::selection{
+    background-color: lightgreen;
+}
+#p1::first-letter{
+    font-size: 200%;
+}
+#container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#formcontainer{
+    display: grid;
+    grid-template-columns: 30% 60% 10%;
+    grid-template-rows: 25% 25% 25% 25%;
+}
+#formitem1{
+    grid-column-start: 1;
+}
+#formitem2{
+    grid-column-start: 2;
+}
+#formitem3{
+    grid-column-start: 3;
+}
+#item1{
+    flex-grow: 1;
+}
+#item2{
+    flex-grow: 2;
+}

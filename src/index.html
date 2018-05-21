@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Note Pro</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div id="item1">
+            <form method="get" action="createNote.html">
+                <button type="submit">create new note</button>
+            </form>
+        </div>
+        <div id="item2">
+            <form>
+                <select onchange="changeColor(this)">
+                    <option value="white">white</option>
+                    <option value="beige">beige</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <div>
+        <p id="p1">Das ist ein Text</p>
+        <div id="text"></div>
+    </div>
+    <script src="js/oneNote.js"></script>
+</body>
+</html>

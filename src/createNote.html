@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Note Pro</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<form class="myForm" method="get" action="index.html">
+    <div class="row">
+        <div class="column">
+            <div class="input-group">
+                <label for="title">Titel </label>
+                <input id="title">
+            </div>
+            <div class="input-group">
+                <label for="description">Beschreibung </label>
+                <input id="description">
+            </div>
+            <div class="input-group">
+                <label for="urgency">Wichtigkeit </label>
+                <input id="urgency">
+            </div>
+            <div class="input-group">
+                <label for="datePicker">Erledigt bis </label>
+                <input id="datePicker" type="date" name="date">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button id="submit" onclick="send()">Speichern</button>
+    </div>
+    <div class="row">
+        <button id="submit">Cancel</button>
+    </div>
+</form>
+<script src="js/oneNote.js"></script>
+</body>
+</html>
