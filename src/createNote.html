@@ -11,27 +11,27 @@
         <div class="column">
             <div class="input-group">
                 <label for="title">Titel </label>
-                <input id="title">
+                <input id="title" data-title required>
             </div>
             <div class="input-group">
                 <label for="description">Beschreibung </label>
-                <input id="description">
+                <input id="description" required>
             </div>
             <div class="input-group">
                 <label for="urgency">Wichtigkeit </label>
-                <input id="urgency">
+                <input id="urgency" required>
             </div>
             <div class="input-group">
                 <label for="datePicker">Erledigt bis </label>
-                <input id="datePicker" type="date" name="date">
+                <input id="datePicker" required type="date" name="date">
             </div>
         </div>
     </div>
     <div class="row">
-        <button id="submit" onclick="send()">Speichern</button>
+        <button id="submit">Speichern</button>
     </div>
     <div class="row">
-        <button id="submit">Cancel</button>
+        <button id="cancel">Cancel</button>
     </div>
 </form>
 <script src="js/oneNote.js"></script>

@@ -9,22 +9,19 @@
     <div id="container">
         <div id="item1">
             <form method="get" action="createNote.html">
-                <button type="submit">create new note</button>
+                <button type="submit">Create new note</button>
             </form>
         </div>
         <div id="item2">
             <form>
                 <select onchange="changeColor(this)">
-                    <option value="white">white</option>
-                    <option value="beige">beige</option>
+                    <option value="white">Style: white</option>
+                    <option value="beige">Style: beige</option>
                 </select>
             </form>
         </div>
     </div>
-    <div>
-        <p id="p1">Das ist ein Text</p>
-        <div id="text"></div>
-    </div>
+    <ul id="notes"></ul>
     <script src="js/oneNote.js"></script>
 </body>
 </html>
