@@ -6,7 +6,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-<form class="myForm" method="get" action="index.html">
+<form class="createNoteForm" action="index.html">
     <div class="row">
         <div class="column">
             <div class="input-group">
@@ -19,7 +19,13 @@
             </div>
             <div class="input-group">
                 <label for="urgency">Wichtigkeit </label>
-                <input id="urgency" required>
+                <fieldset id="urgency" class="rating">
+                    <input type="radio" name="star" id="star5" name="rating" data-value='5' value="5" /><label for="star5">5 stars</label>
+                    <input type="radio" name="star" id="star4" name="rating" data-value='4' value="4" /><label for="star4">4 stars</label>
+                    <input type="radio" name="star" id="star3" name="rating" data-value='3' value="3" /><label for="star3">3 stars</label>
+                    <input type="radio" name="star" id="star2" name="rating" data-value='2' value="2" /><label for="star2">2 stars</label>
+                    <input type="radio" name="star" id="star1" name="rating" data-value='1' value="1" /><label for="star1">1 star</label>
+                </fieldset>
             </div>
             <div class="input-group">
                 <label for="datePicker">Erledigt bis </label>
@@ -28,10 +34,10 @@
         </div>
     </div>
     <div class="row">
-        <button id="submit">Speichern</button>
+        <button id="submit" type="submit">Speichern</button>
     </div>
     <div class="row">
-        <button id="cancel">Cancel</button>
+        <button id="cancel" formnovalidate >Cancel</button>
     </div>
 </form>
 <script src="js/oneNote.js"></script>
