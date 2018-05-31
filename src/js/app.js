@@ -24,13 +24,17 @@ function createNotesList(notes) {
         htmlString += "<p>";
         htmlString += note.description;
         htmlString += "</p>";
-        htmlString += "<input id=\"checkBox\" type=\"checkbox\">";
+        htmlString += "<input id=\"checkBox\" onchange='changeStatus(\"" + note.id + "\")' type=\"checkbox\">";
         htmlString += " finished";
         htmlString += "</input>";
         htmlString += "</li>";
     });
     return htmlString;
 }
+function changeStatus(id){
+    const note = getNoteById(id);
+}
+
 
 function guid() {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +

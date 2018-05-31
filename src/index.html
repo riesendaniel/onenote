@@ -21,9 +21,10 @@
             </form>
         </div>
         <div id="menu1">
-            <button type="submit">By finish Date</button>
-            <button type="submit">By created Date</button>
-            <button type="submit">By Importance</button>
+            <fieldset id="sort" class="sort">
+                <input type="radio" id="finishDate" data-value='1' value="1" /><label for="finishDate">By finish Date</label>
+                <input type="radio" id="createDate" data-value='1' value="1" /><label for="createDate">By created Date</label>
+                <input type="radio" id="importance" data-value='1' value="1" /><label for="importance">By Importance</label>
         </div>
         <div id="menu4">
             <button type="submit">Show finished</button>
