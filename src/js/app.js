@@ -6,12 +6,6 @@ if (!color) {
 color = JSON.parse(color);
 document.body.style.backgroundColor = color;
 
-var notes = sessionStorage.getItem("notes");
-if (!notes) {
-    sessionStorage.setItem("notes", JSON.stringify([]));
-    notes = sessionStorage.getItem("notes");
-}
-notes = JSON.parse(notes);
 
 function changeColor(form_element) {
     sessionStorage.setItem("color", JSON.stringify(form_element.value));
@@ -51,17 +45,16 @@ function s4() {
 
 function sendButtonClickEvent(event){
     if(document.getElementById("title").checkValidity() && document.getElementById("description").checkValidity()) {
-        var json = JSON.parse('{"id":"' + guid() + '", "title":"' + document.getElementById("title").value + '", "status": "offen", "description":"'
+        var note = JSON.parse('{"id":"' + guid() + '", "title":"' + document.getElementById("title").value + '", "status": "offen", "description":"'
             + document.getElementById("description").value + '", "rating":1, "erledigtbis":"2018-12-01"}');
-        notes.push(json);
-        sessionStorage.setItem("notes", JSON.stringify(notes));
+        addNote(note)
         window.location.replace("index.html");
     }
 }
 
-function renderSongs() {
+function renderNotes() {
     if (document.getElementById("notes")) {
-        document.getElementById("notes").innerHTML = createNotesList(notes);
+        document.getElementById("notes").innerHTML = createNotesList(getNotes());
     }
 }
 
@@ -72,6 +65,6 @@ function submitButton() {
 }
 
 window.onload = function () {
-    renderSongs();
+    renderNotes();
     submitButton();
 }

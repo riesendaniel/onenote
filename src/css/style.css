@@ -44,7 +44,7 @@ body {
     background-color: cornflowerblue; /* blue */
     border-radius: 0.6em;
     color: white;
-    padding: 1.0em 2.0em;
+    padding: 0.5em 1.0em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -53,11 +53,19 @@ body {
     transition-duration: 0.4s;
     cursor: pointer;
 }
+#menu1 button {
+    background: darkcyan;
+}
+#menu4 button {
+    background: darkcyan;
+}
 
 .createNoteForm button:hover, button:hover {
     background-color: white;
     color: black;
 }
+
+
 
 .createNoteForm fieldset {
     border: 0;
@@ -84,29 +92,62 @@ select:focus::-ms-value {
 }
 
 #container {
+    /*
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-start;*/
+    margin:0;
+    display: grid;
+    height: 100vh;
+
+    grid-template-columns: 20%;
+    grid-template-rows: 60px 60px calc(100% - 120px);
+    grid-template-areas:
+            "header1 header1 header1 header4"
+            "menu1 menu1 menu1 menu4"
+            "main main main main"
+
 }
 
-#item1 {
-    flex-grow: 1;
+#header1 {
+    /*flex-grow: 1;*/
+    grid-area: header1;
 }
 
-#item2 {
+#header4 {
+    /*
     flex-grow: 2;
     text-align: right;
+    padding: 1.0em 2.0em;*/
+
+    text-align: right;
     padding: 1.0em 2.0em;
+    grid-area: header4;
 }
 
+#menu1 {
+    grid-area: menu1;
+}
+
+#menu4 {
+    grid-area: menu4;
+    text-align: right;
+    padding: 0em 1.0em;
+}
+
+#main {
+    grid-area: main;
+}
 
 /* Notes List */
 h2, p {
     /* unnötig */
     font-size: 100%;
     font-weight: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 ul, li {
@@ -263,4 +304,3 @@ ol li a {
     top:2px;
     left:2px;
 }
-
