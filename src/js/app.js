@@ -12,48 +12,49 @@ function changeColor(form_element) {
     document.body.style.backgroundColor = form_element.value;
 }
 
+
 function createNotesList(notes) {
     let htmlString = "";
     notes.forEach(function (note) {
-        htmlString += "<li>";
-        htmlString += "<a href=\"createNote.html\">";
-        htmlString += "<h2>";
-        htmlString += note.title;
-        htmlString += !note.rating ? "" : " " + "*".repeat(note.rating);
-        htmlString += "</h2>";
-        htmlString += "<p>";
-        htmlString += note.description;
-        htmlString += "</p>";
-        htmlString += "<input id=\"checkBox\" onchange='changeStatus(\"" + note.id + "\")' type=\"checkbox\">";
-        htmlString += " finished";
-        htmlString += "</input>";
-        htmlString += "</li>";
-    });
+            htmlString += "<li>";
+            htmlString += "<a href=\"createNote.html\">";
+            htmlString += "<h2>";
+            htmlString += note.title;
+            htmlString += !note.rating ? "" : " " + "*".repeat(note.rating);
+            htmlString += "</h2>";
+            htmlString += "<p>";
+            htmlString += note.description;
+            htmlString += "</p>";
+            if (note.status === "offen") {
+                htmlString += "<input id=\"checkBox\"  onchange='changeStatus(\"" + note.id + "\")' type=\"checkbox\">";
+            }
+            else {
+                htmlString += "<input id=\"checkBox\" checked onchange='changeStatus(\"" + note.id + "\")' type=\"checkbox\">";
+            }
+            htmlString += " finished";
+            htmlString += "</input>";
+            htmlString += "</li>";
+        }
+    )
+    ;
     return htmlString;
 }
-function changeStatus(id){
+
+function changeStatus(id) {
     const note = getNoteById(id);
+    updateStatus(note);
 }
 
-
-function guid() {
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-        s4() + '-' + s4() + s4() + s4();
-}
-
-function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-}
-
-function sendButtonClickEvent(event){
-    if(document.getElementById("title").checkValidity() && document.getElementById("description").checkValidity()) {
-        var note = JSON.parse('{"id":"' + guid() + '", "title":"' + document.getElementById("title").value + '", "status": "offen", "description":"'
-            + document.getElementById("description").value + '", "rating":1, "erledigtbis":"2018-12-01"}');
-        addNote(note)
+function sendButtonClickEvent(event) {
+    if (document.getElementById("title").checkValidity() && document.getElementById("description").checkValidity()) {
+        addNote(document.getElementById("title").value, "offen", document.getElementById("description").value, 1, "2018-12-01");
         window.location.replace("index.html");
     }
+}
+
+function sort(event) {
+    const sort = document.getElementById("finishDate").checked ? 1 : document.getElementById("createDate").checked ? 2 : 3;
+    document.getElementById("notes").innerHTML = createNotesList(getNotes(sort));
 }
 
 function renderNotes() {
@@ -68,7 +69,14 @@ function submitButton() {
     }
 }
 
+function initSort() {
+    if (document.getElementById("sort")) {
+        document.getElementById("sort").addEventListener("click", sort);
+    }
+}
+
 window.onload = function () {
     renderNotes();
     submitButton();
+    initSort();
 }
