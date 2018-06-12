@@ -6,32 +6,32 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div id="container">
-        <div id="header1">
-            <form method="get" action="createNote.html">
-                <button type="submit">Create new note</button>
-            </form>
-        </div>
-        <div id="header4">
-            <form>
-                <select onchange="changeColor(this)">
-                    <option value="white">Style: white</option>
-                    <option value="beige">Style: beige</option>
-                </select>
-            </form>
-        </div>
-        <div id="menu1">
-            <fieldset id="sort" class="sort">
-                <input type="radio" id="finishDate" data-value='1' value="1" /><label for="finishDate">By finish Date</label>
-                <input type="radio" id="createDate" data-value='1' value="1" /><label for="createDate">By created Date</label>
-                <input type="radio" id="importance" data-value='1' value="1" /><label for="importance">By Importance</label>
-        </div>
-        <div id="menu4">
-            <button type="submit">Show finished</button>
-        </div>
-        <div id="main"><ul id="notes"></ul></div>
+<div id="container">
+    <div id="header1">
+        <form method="get" action="createNote.html">
+            <button type="submit">Create new note</button>
+        </form>
     </div>
-    <script src="js/app.js"></script>
-    <script src="js/notesStorage.js"></script>
+    <div id="header4">
+        <form>
+            <select onchange="changeColor(this)">
+                <option value="white">Style: white</option>
+                <option value="beige">Style: beige</option>
+            </select>
+        </form>
+    </div>
+    <div id="menu1">
+        <fieldset id="sort" class="sort">
+            <input type="radio" name="sort" id="finishDate" data-value='1' value="1" /><label for="finishDate">By finish Date</label>
+            <input type="radio" name="sort" id="createDate" data-value='2' value="2" /><label for="createDate">By created Date</label>
+            <input type="radio" name="sort" id="importance" data-value='3' value="3" /><label for="importance">By Importance</label>
+    </div>
+    <div id="menu4">
+        <input id="showFinished" type="checkbox" name="showFinished"> Show finished
+    </div>
+    <div id="main"><ul id="notes"></ul></div>
+</div>
+<script src="js/app.js"></script>
+<script src="js/notesStorage.js"></script>
 </body>
 </html>
