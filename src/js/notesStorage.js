@@ -2,8 +2,7 @@ var data = sessionStorage.getItem("notes");
 var notes = data ? JSON.parse(data) : [];
 
 function compareNotesByFinished(s1, s2) {
-    console.log(s1.finished, s2.finished, s1.finished > s2.finished);
-    return s1.finished > s2.finished;
+    return s1.erledigtbis > s2.erledigtbis;
 }
 
 function compareNotesByCreated(s1, s2) {
@@ -15,24 +14,27 @@ function compareNotesByImportance(s1, s2) {
 }
 
 function getNotes(orderBy, filterBy) {
+    var data = sessionStorage.getItem("notes");
+    var tempNotes = data ? JSON.parse(data) : [];
+
     if (filterBy) {
-        notes.filter(note => note.status === "closed");
+        tempNotes = tempNotes.filter(note => note.status == "erledigt");
     }
     if (orderBy) {
-        switch(orderBy) {
+        switch (orderBy) {
             case 1:
-                notes.sort((a, b) => compareNotesByFinished(a, b));
+                tempNotes.sort((a, b) => compareNotesByFinished(a, b));
                 break;
             case 2:
-                notes.sort((a, b) => compareNotesByCreated(a, b));
+                tempNotes.sort((a, b) => compareNotesByCreated(a, b));
                 break;
             case 3:
-                notes.sort((a, b) => compareNotesByImportance(a, b));
+                tempNotes.sort((a, b) => compareNotesByImportance(a, b));
                 break;
             default:
         }
     }
-    return notes;
+    return tempNotes;
 }
 
 function guid() {
@@ -47,7 +49,7 @@ function s4() {
 }
 
 function addNote(title, status, description, rating, erledigtBis) {
-    var note = JSON.parse('{"id": "' + guid() + '", "title": "' + title + '", "status": "' + status + '", "created": "' +  new Date() + '", "finished": "' + null + '", "description": "' + description + '", "rating": ' + rating + ', "erledigtbis": "' + erledigtBis + '"}');
+    var note = JSON.parse('{"id": "' + guid() + '", "title": "' + title + '", "status": "' + status + '", "created": "' + new Date() + '", "finished": "' + null + '", "description": "' + description + '", "rating": ' + rating + ', "erledigtbis": "' + erledigtBis + '"}');
     notes.push(note);
     sessionStorage.setItem("notes", JSON.stringify(notes));
 }
@@ -57,6 +59,12 @@ function updateNote(note) {
     notes = tempToDos;
     notes.push(note);
     sessionStorage.setItem("notes", JSON.stringify(notes));
+}
+
+function updateNoteData(id, title, description, rating, erledigtBis) {
+    const note = getNoteById(id);
+
+    updateNote({...note, title: title, description: description})
 }
 
 function updateStatus(note) {
