@@ -36,10 +36,36 @@
             <span>Show finished</span>
         </label>
     </div>
-    <div id="main">
+    <!--<div id="main">
         <ul id="notes"></ul>
-    </div>
+    </div>-->
+    <div id="main" class="js-user"></div>
+    <script id="notes-template" type="text/x-handlebars-template">
+        <ul id="notes">
+            {{#each notes}}
+                <li>
+                    {{#ifCond  status '===' 'offen'}}
+                    <a onclick="editNote()">
+                        {{else}}
+                    <a>
+                    {{/ifCond}}
+                        <h2>{{title}} {{formatRating rating}}</h2>
+                        <p>{{description}}</p>
+
+                        {{#ifCond  status '===' 'offen'}}
+                            <input id="checkBoxF" onchange="changeStatus()" type="checkbox"> finished ( {{erledigtbis}} )
+                        {{else}}
+                            <input id="checkBoxC" checked onchange="changeStatus()" type="checkbox"> finished ( {{erledigtbis}} )
+                        {{/ifCond}}
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </script>
 </div>
+<script src="js/libs/handlebars-v4.0.5.js"></script>
+<script src="js/libs/jquery-2.1.4.min.js"></script>
+<script src="js/utils/handlebarsHelpers.js"></script>
 <script src="js/app.js"></script>
 <script src="js/notesStorage.js"></script>
 </body>

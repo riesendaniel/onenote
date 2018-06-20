@@ -74,9 +74,18 @@ function sortFilter(event) {
     document.getElementById("notes").innerHTML = createNotesList(getNotes(sort, showFinished));
 }
 
+
+
 function renderNotes() {
+    if (document.getElementById("notes-template")) {
+        const main = $("#main");
+        const notesRenderer = Handlebars.compile($("#notes-template").html());
+        const notes = getNotes();
+        main.html(notesRenderer({notes : notes}));
+    }
+
     if (document.getElementById("notes")) {
-        document.getElementById("notes").innerHTML = createNotesList(getNotes());
+        //document.getElementById("notes").innerHTML = createNotesList(getNotes());
     }
 }
 

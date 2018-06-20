@@ -11,7 +11,9 @@
   "license": "MIT",
   "homepage": "https://github.com/riesendaniel/onenote",
   "dependencies": {
-    "serve": "^6.1.0"
+    "serve": "^6.1.0",
+    "handlebars": "~4.0.11",
+    "jquery": "^3.1.1"
   },
   "scripts": {
     "start": "node index.js"
