@@ -1,4 +1,3 @@
-const store = require("restClient");
 var data = sessionStorage.getItem("notes");
 var notes = data ? JSON.parse(data) : [];
 
@@ -14,7 +13,7 @@ function compareNotesByImportance(s1, s2) {
     return s1.rating < s2.rating;
 }
 
-module.exports.getNotes = function(req, res) {
+function getNotes(filterBy, orderBy){
     var data = sessionStorage.getItem("notes");
     var tempNotes = data ? JSON.parse(data) : [];
 

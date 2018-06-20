@@ -25,6 +25,7 @@
             <input type="radio" name="sort" id="finishDate" data-value='1' value="1" /><label for="finishDate">By finish Date</label>
             <input type="radio" name="sort" id="createDate" data-value='2' value="2" /><label for="createDate">By created Date</label>
             <input type="radio" name="sort" id="importance" data-value='3' value="3" /><label for="importance">By Importance</label>
+        </fieldset>
     </div>
     <div id="menu4">
         <input id="showFinished" type="checkbox" name="showFinished"> Show finished
@@ -33,5 +34,11 @@
 </div>
 <script src="javascripts/controllers/app.js"></script>
 <script src="javascripts/services/notesStorage.js"></script>
+<script src="javascripts/libs/handlebars-v4.0.5.js"></script>
+<script src="javascripts/libs/jquery-2.1.4.min.js"></script>
+<script src="javascripts/utils/ajaxUtil.js"></script>
+<script src="javascripts/services/valueStorage.js"></script>
+<script src="javascripts/services/restClient.js"></script>
+
 </body>
 </html>
