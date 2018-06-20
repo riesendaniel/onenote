@@ -6,12 +6,10 @@ if (!color) {
 color = JSON.parse(color);
 document.body.style.backgroundColor = color;
 
-
 function changeColor(form_element) {
     sessionStorage.setItem("color", JSON.stringify(form_element.value));
     document.body.style.backgroundColor = form_element.value;
 }
-
 
 function createNotesList(notes) {
     let htmlString = "";
@@ -45,7 +43,7 @@ function createNotesList(notes) {
 }
 
 function getURLParameter(name) {
-    var value = decodeURIComponent((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, ""])[1]);
+    const value = decodeURIComponent((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, ""])[1]);
     return (value !== 'null') ? value : false;
 }
 
@@ -60,7 +58,6 @@ function changeStatus(id) {
 
 function sendButtonClickEvent(event) {
     const id = document.getElementById("noteID").value;
-
     const star = document.getElementById("star1").checked ? 1 : document.getElementById("star2").checked ? 2 : document.getElementById("star3").checked ? 3 : document.getElementById("star4").checked ? 4 : document.getElementById("star5").checked ? 5 : 0;
 
     if (id && document.getElementById("title").checkValidity() && document.getElementById("description").checkValidity() && document.getElementById("datePicker").checkValidity()) {
@@ -101,13 +98,12 @@ window.onload = function () {
     submitButton();
     initSortFilter();
 
-    var urlId = getURLParameter('id');
+    const urlId = getURLParameter('id');
     if (urlId) {
         const note = getNoteById(urlId);
         document.getElementById("title").value = note.title;
         document.getElementById("description").value = note.description;
         document.getElementById("urgency").value = note.erledigtbis;
         document.getElementById("noteID").value = note.id;
-
     }
 }

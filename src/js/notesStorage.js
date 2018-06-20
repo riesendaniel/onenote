@@ -49,21 +49,19 @@ function s4() {
 }
 
 function addNote(title, status, description, rating, erledigtBis) {
-    var note = JSON.parse('{"id": "' + guid() + '", "title": "' + title + '", "status": "' + status + '", "created": "' + new Date() + '", "finished": "' + null + '", "description": "' + description + '", "rating": ' + rating + ', "erledigtbis": "' + erledigtBis + '"}');
+    const note = JSON.parse('{"id": "' + guid() + '", "title": "' + title + '", "status": "' + status + '", "created": "' + new Date() + '", "finished": "' + null + '", "description": "' + description + '", "rating": ' + rating + ', "erledigtbis": "' + erledigtBis + '"}');
     notes.push(note);
     sessionStorage.setItem("notes", JSON.stringify(notes));
 }
 
 function updateNote(note) {
-    const tempToDos = notes.filter(t => t.id !== note.id);
-    notes = tempToDos;
+    notes = notes.filter(t => t.id !== note.id);
     notes.push(note);
     sessionStorage.setItem("notes", JSON.stringify(notes));
 }
 
 function updateNoteData(id, title, description, rating, erledigtBis) {
     const note = getNoteById(id);
-
     updateNote({...note, title: title, description: description})
 }
 
