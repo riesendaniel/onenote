@@ -11,11 +11,14 @@
   "license": "MIT",
   "homepage": "https://github.com/riesendaniel/onenote",
   "dependencies": {
-    "serve": "^6.1.0",
+    "@std/esm": "^0.23.3",
+    "express": "^4.12.4",
+    "body-parser": "^1.12.4",
     "handlebars": "~4.0.11",
-    "jquery": "^3.1.1"
+    "nedb": "^1.8.0",
+    "nedb-promise": "^2.0.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node -r @std/esm index.js"
   }
 }

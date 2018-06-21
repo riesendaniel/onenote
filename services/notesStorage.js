@@ -1,6 +1,23 @@
-var data = sessionStorage.getItem("notes");
-var notes = data ? JSON.parse(data) : [];
+const Datastore = require('nedb-promise');
+const db = new Datastore({ filename: './data/notes.db', autoload: true });
 
+getNotes().then((r) => {
+    console.log(r);
+});
+
+async function getNotes()
+{
+    return await db.find({});
+}
+
+module.exports = {all : getNotes};
+
+
+//console.log(db);
+
+//var data = sessionStorage.getItem("notes");
+//var notes = data ? JSON.parse(data) : [];
+/*
 function compareNotesByFinished(s1, s2) {
     return s1.erledigtbis > s2.erledigtbis;
 }
@@ -14,8 +31,8 @@ function compareNotesByImportance(s1, s2) {
 }
 
 function getNotes(orderBy, filterBy) {
-    var data = sessionStorage.getItem("notes");
-    var tempNotes = data ? JSON.parse(data) : [];
+    //var data = sessionStorage.getItem("notes");
+    var tempNotes = [];//data ? JSON.parse(data) : [];
 
     if (filterBy) {
         tempNotes = tempNotes.filter(note => note.status == "erledigt");
@@ -75,4 +92,4 @@ function updateStatus(note) {
 
 function getNoteById(id) {
     return notes.filter(note => note.id === id)[0];
-}
+}*/
