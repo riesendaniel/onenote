@@ -45,18 +45,13 @@
             {{#each notes}}
                 <li>
                     {{#ifCond  status '===' 'offen'}}
-                    <a onclick="editNote()">
+                    <a id="editNote" name="editNote" data-value="{{id}}">
                         {{else}}
                     <a>
                     {{/ifCond}}
                         <h2>{{title}} {{formatRating rating}}</h2>
                         <p>{{description}}</p>
-
-                        {{#ifCond  status '===' 'offen'}}
-                            <input id="checkBoxF" onchange="changeStatus()" type="checkbox"> finished ( {{erledigtbis}} )
-                        {{else}}
-                            <input id="checkBoxC" checked onchange="changeStatus()" type="checkbox"> finished ( {{erledigtbis}} )
-                        {{/ifCond}}
+                        <input id="checkBoxNote" {{checkedIfStatus status}} name="checkBoxNote" data-value="{{id}}" type="checkbox"> finished ( {{erledigtbis}} )
                     </a>
                 </li>
             {{/each}}

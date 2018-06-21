@@ -11,49 +11,20 @@ function changeColor(form_element) {
     document.body.style.backgroundColor = form_element.value;
 }
 
-function createNotesList(notes) {
-    let htmlString = "";
-    notes.forEach(function (note) {
-            htmlString += "<li>";
-            if (note.status === "offen") {
-                htmlString += "<a onclick='editNote(\"" + note.id + "\")'>";
-            } else {
-                htmlString += "<a>";
-            }
-            htmlString += "<h2>";
-            htmlString += note.title;
-            htmlString += !note.rating ? "" : " " + "*".repeat(note.rating);
-            htmlString += "</h2>";
-            htmlString += "<p>";
-            htmlString += note.description;
-            htmlString += "</p>";
-            if (note.status === "offen") {
-                htmlString += "<input id=\"checkBox\"  onchange='changeStatus(\"" + note.id + "\")' type=\"checkbox\">";
-            }
-            else {
-                htmlString += "<input id=\"checkBox\" checked onchange='changeStatus(\"" + note.id + "\")' type=\"checkbox\">";
-            }
-            htmlString += " finished ( " + note.erledigtbis + " )";
-            htmlString += "</input>";
-            htmlString += "</li>";
-        }
-    )
-    ;
-    return htmlString;
-}
-
 function getURLParameter(name) {
     const value = decodeURIComponent((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, ""])[1]);
     return (value !== 'null') ? value : false;
 }
-
-function editNote(id) {
-    window.location.replace("createNote.html?id=" + id);
+function changeStatus(event) {
+    const note = getNoteById(event.currentTarget.dataset.value);
+    updateStatus(note);
 }
 
-function changeStatus(id) {
-    const note = getNoteById(id);
-    updateStatus(note);
+function sendButtonEditEvent(event) {
+    const note = getNoteById(event.currentTarget.dataset.value);
+    if(note.status === "offen"){
+        window.location.replace("createNote.html?id=" + note.id);
+    }
 }
 
 function sendButtonClickEvent(event) {
@@ -71,21 +42,30 @@ function sendButtonClickEvent(event) {
 function sortFilter(event) {
     const sort = document.getElementById("finishDate").checked ? 1 : document.getElementById("createDate").checked ? 2 : 3;
     const showFinished = document.getElementById("showFinished").checked;
-    document.getElementById("notes").innerHTML = createNotesList(getNotes(sort, showFinished));
+    renderNotes(getNotes(sort, showFinished));
 }
 
 
 
-function renderNotes() {
+function renderNotes(notes) {
     if (document.getElementById("notes-template")) {
         const main = $("#main");
-        const notesRenderer = Handlebars.compile($("#notes-template").html());
-        const notes = getNotes();
-        main.html(notesRenderer({notes : notes}));
-    }
 
-    if (document.getElementById("notes")) {
-        //document.getElementById("notes").innerHTML = createNotesList(getNotes());
+        const notesRenderer = Handlebars.compile($("#notes-template").html());
+        main.html(notesRenderer({notes : notes}));
+
+        if(document.getElementsByName("editNote")){
+            let editNotes = document.getElementsByName("editNote");
+            for (let editNote of Array.from(editNotes)) {
+                editNote.addEventListener("click", sendButtonEditEvent);
+            }
+        }
+        if(document.getElementsByName("checkBoxNote")){
+            let checkboxes = document.getElementsByName("checkBoxNote");
+            for (let checkbox of Array.from(checkboxes)) {
+                checkbox.addEventListener("click", changeStatus);
+            }
+        }
     }
 }
 
@@ -103,7 +83,7 @@ function initSortFilter() {
 }
 
 window.onload = function () {
-    renderNotes();
+    renderNotes(getNotes());
     submitButton();
     initSortFilter();
 
@@ -112,7 +92,8 @@ window.onload = function () {
         const note = getNoteById(urlId);
         document.getElementById("title").value = note.title;
         document.getElementById("description").value = note.description;
-        document.getElementById("urgency").value = note.erledigtbis;
+        document.getElementById("star" + note.rating).checked = true;
+        document.getElementById("datePicker").value = note.erledigtbis;
         document.getElementById("noteID").value = note.id;
     }
 }

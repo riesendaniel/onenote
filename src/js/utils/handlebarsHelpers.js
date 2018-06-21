@@ -29,3 +29,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 Handlebars.registerHelper('formatRating', function (data) {
     return !data ? "" : " " + "*".repeat(data);
 });
+
+Handlebars.registerHelper("checkedIfStatus", function (condition) {
+    return (condition === "erledigt") ? "checked" : "";
+});

@@ -60,9 +60,9 @@ function updateNote(note) {
     sessionStorage.setItem("notes", JSON.stringify(notes));
 }
 
-function updateNoteData(id, title, description, rating, erledigtBis) {
+function updateNoteData(id, title, description, rating, erledigtbis) {
     const note = getNoteById(id);
-    updateNote({...note, title: title, description: description})
+    updateNote({...note, title: title, description: description, rating: rating, erledigtbis: erledigtbis})
 }
 
 function updateStatus(note) {
