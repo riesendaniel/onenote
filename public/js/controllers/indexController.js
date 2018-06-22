@@ -2,8 +2,9 @@
     let client = window.services.restClient;
     $(function(){
         function changeStatus(event) {
-            const note = getNoteById(event.currentTarget.dataset.value);
-            updateStatus(note);
+            client.changeStatus(event.currentTarget.dataset.value).done(function(){
+                renderNotes(getNotes());
+            })
         }
 
         function sendButtonEditEvent(event) {
@@ -16,9 +17,9 @@
         }
 
         function sortFilter(event) {
-            const sort = document.getElementById("finishDate").checked ? 1 : document.getElementById("createDate").checked ? 2 : 3;
+            //const sort = document.getElementById("finishDate").checked ? 1 : document.getElementById("createDate").checked ? 2 : 3;
             const showFinished = document.getElementById("showFinished").checked;
-            renderNotes(getNotes(sort, showFinished));
+            renderNotes(getNotes(showFinished));
         }
 
         function renderNotes(notes) {
@@ -43,9 +44,9 @@
             }
         }
 
-        function getNotes()
+        function getNotes(filter)
         {
-            client.getNotes().done(function(notes){
+            client.getNotes(filter).done(function(notes){
                 renderNotes(notes);
             })
         }

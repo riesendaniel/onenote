@@ -36,9 +36,6 @@
             <span>Show finished</span>
         </label>
     </div>
-    <!--<div id="main">
-        <ul id="notes"></ul>
-    </div>-->
     <div id="main" class="js-user"></div>
     <script id="notes-template" type="text/x-handlebars-template">
         <ul id="notes">
@@ -51,7 +48,7 @@
                     {{/ifCond}}
                         <h2>{{title}} {{formatRating rating}}</h2>
                         <p>{{description}}</p>
-                        <input id="checkBoxNote" {{checkedIfStatus status}} name="checkBoxNote" data-value="{{id}}" type="checkbox"> finished ( {{erledigtbis}} )
+                        <input id="checkBoxNote" {{checkedIfStatus status}} name="checkBoxNote" data-value="{{_id}}" type="checkbox"> finished ( {{erledigtbis}} )
                     </a>
                 </li>
             {{/each}}

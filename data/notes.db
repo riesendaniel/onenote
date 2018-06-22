@@ -1,3 +1,4 @@
-{"title":"Test 1","status":"offen","created":"2018-01-01","finished":"null","description":"Das ist ein Test","rating":3,"erledigtbis":"2018-01-01","_id":"ApSRS70f2PndiL98"}
-{"id":"84916870-d3da-cf22-fe01-b328e1cbc26b","title":"fghf","status":"offen","created":"Fri Jun 22 2018 09:51:41 GMT+0200 (W. Europe Summer Time)","finished":"null","description":"gh","rating":3,"erledigtbis":"2018-06-03","_id":"RXXkXE1iCoEyskL8"}
-{"title":"newnew44","status":"offen","created":"Fri Jun 22 2018 10:11:11 GMT+0200 (W. Europe Summer Time)","finished":"null","description":"newnew44","rating":3,"erledigtbis":"2019-04-13","_id":"ZNEiMN1igfnKAR21"}
+{"status":"erledigt","created":"2018-01-01","finished":{"$$date":1529668481930},"_id":"ApSRS70f2PndiL98"}
+{"title":"dd","status":"offen","created":"Fri Jun 22 2018 14:21:40 GMT+0200 (W. Europe Summer Time)","finished":"null","description":"dd","rating":0,"erledigtbis":"2018-06-03","_id":"QlrzZLVmnh7Lkk6i"}
+{"id":"84916870-d3da-cf22-fe01-b328e1cbc26b","title":"fghf","status":"offen","created":"Fri Jun 22 2018 09:51:41 GMT+0200 (W. Europe Summer Time)","finished":null,"description":"gh","rating":3,"erledigtbis":"2018-06-03","_id":"RXXkXE1iCoEyskL8"}
+{"title":"newnew44","status":"erledigt","created":"Fri Jun 22 2018 10:11:11 GMT+0200 (W. Europe Summer Time)","finished":{"$$date":1529670037109},"description":"444","rating":3,"erledigtbis":"2019-04-13","_id":"ZNEiMN1igfnKAR21"}

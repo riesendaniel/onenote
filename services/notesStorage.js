@@ -1,12 +1,13 @@
 const Datastore = require('nedb-promise');
 const db = new Datastore({filename: './data/notes.db', autoload: true});
 
-getNotes().then((r) => {
-    console.log(r);
-});
+async function getNotes(filter) {
+    if(filter == "true"){
+        return await db.find({"status": "erledigt"});
+    }else{
+        return await db.find({});
+    }
 
-async function getNotes() {
-    return await db.find({});
 }
 
 async function getNoteById(id) {
@@ -17,14 +18,28 @@ async function updateNote(id, title, description, rating, erledigtbis) {
     return await db.update({_id: id}, {$set: {"title": title, "description": description, "rating": rating, "erledigtbis": erledigtbis}});
 }
 
+async function changeStatus(id) {
+    await getNoteById(id).then((note) => {
+        if (note.status == "offen") {
+            return db.update({_id: id}, {$set: {"status": "erledigt", "finished": new Date()}});
+        } else {
+            return db.update({_id: id}, {$set: {"status": "offen", "finished": null}});
+        }
+    });
+}
+
 async function addNote(title, status, description, rating, erledigtBis) {
     const note = JSON.parse('{"title": "' + title + '", "status": "' + status + '", "created": "' + new Date() + '", "finished": "' + null + '", "description": "' + description + '", "rating": ' + rating + ', "erledigtbis": "' + erledigtBis + '"}');
     return await db.insert(note);
 }
 
-module.exports = {all: getNotes, byId: getNoteById, add: addNote, update: updateNote};
+module.exports = {all: getNotes, byId: getNoteById, add: addNote, update: updateNote, changeStatus: changeStatus};
 
-
+/*
+getNotes().then((r) => {
+    console.log(r);
+});
+*/
 //console.log(db);
 
 //var data = sessionStorage.getItem("notes");

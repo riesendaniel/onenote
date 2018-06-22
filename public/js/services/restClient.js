@@ -2,12 +2,18 @@
 
     const ajaxUtil = window.util.ajax;
 
-    function getNotes() {
-        return ajaxUtil.ajax("GET", "/notes/", undefined, undefined);
+    function getNotes(filter) {
+        return ajaxUtil.ajax("GET", "/notes?filter="+ filter, undefined, undefined);
     }
 
     function getNoteById(id) {
         return ajaxUtil.ajax("GET", `/notes/${id}`, undefined, undefined);
+    }
+
+    function changeStatus(id) {
+        return ajaxUtil.ajax("POST", "/changeStatus/", {
+            id: id
+        }, undefined);
     }
 
     function updateNote(id, title, description, rating, erledigtBis) {
@@ -34,6 +40,7 @@
         getNotes,
         getNoteById,
         updateNote,
+        changeStatus,
         addNote
     };
 }(window.services = window.services || {}, jQuery));
