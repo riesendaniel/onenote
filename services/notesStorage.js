@@ -2,7 +2,7 @@ const Datastore = require('nedb-promise');
 const db = new Datastore({filename: './data/notes.db', autoload: true});
 
 async function getNotes(filter) {
-    if(filter == "true"){
+    if(filter === "true"){
         return await db.find({"status": "erledigt"});
     }else{
         return await db.find({});
@@ -20,7 +20,7 @@ async function updateNote(id, title, description, rating, erledigtbis) {
 
 async function changeStatus(id) {
     await getNoteById(id).then((note) => {
-        if (note.status == "offen") {
+        if (note.status === "offen") {
             return db.update({_id: id}, {$set: {"status": "erledigt", "finished": new Date()}});
         } else {
             return db.update({_id: id}, {$set: {"status": "offen", "finished": null}});

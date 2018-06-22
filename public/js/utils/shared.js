@@ -1,4 +1,4 @@
-var color = sessionStorage.getItem("color");
+let color = sessionStorage.getItem("color");
 if (!color) {
     sessionStorage.setItem("color", JSON.stringify(["white"]));
     color = sessionStorage.getItem("color");
