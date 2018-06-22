@@ -1,3 +1,6 @@
-{"title":"dd","status":"erledigt","created":"Fri Jun 22 2018 14:21:40 GMT+0200 (W. Europe Summer Time)","finished":{"$$date":1529670708991},"description":"dd","rating":0,"erledigtbis":"2018-06-03","_id":"QlrzZLVmnh7Lkk6i"}
+{"title":"Test","status":"erledigt","created":"Fri Jun 22 2018 15:09:05 GMT+0200 (W. Europe Summer Time)","finished":{"$$date":1529672961796},"description":"3335","rating":1,"erledigtbis":"2018-06-03","_id":"IBeseGUA2JjEbWXp"}
+{"title":"Test3","status":"offen","created":"Fri Jun 22 2018 15:08:43 GMT+0200 (W. Europe Summer Time)","finished":"null","description":"fefs","rating":3,"erledigtbis":"2018-06-03","_id":"KGUSA3icSYLfFM1U"}
+{"title":"dd","status":"offen","created":"Fri Jun 22 2018 14:21:40 GMT+0200 (W. Europe Summer Time)","finished":null,"description":"dd","rating":0,"erledigtbis":"2018-06-03","_id":"QlrzZLVmnh7Lkk6i"}
 {"id":"84916870-d3da-cf22-fe01-b328e1cbc26b","title":"fghf","status":"offen","created":"Fri Jun 22 2018 09:51:41 GMT+0200 (W. Europe Summer Time)","finished":null,"description":"gh","rating":3,"erledigtbis":"2018-06-03","_id":"RXXkXE1iCoEyskL8"}
 {"title":"newnew44","status":"erledigt","created":"Fri Jun 22 2018 10:11:11 GMT+0200 (W. Europe Summer Time)","finished":{"$$date":1529670037109},"description":"444","rating":3,"erledigtbis":"2019-04-13","_id":"ZNEiMN1igfnKAR21"}
+{"title":"sdfdsf","status":"erledigt","created":"Fri Jun 22 2018 15:08:50 GMT+0200 (W. Europe Summer Time)","finished":{"$$date":1529672958587},"description":"sd","rating":5,"erledigtbis":"2018-06-02","_id":"wvSMiLBZZxIOrcCg"}

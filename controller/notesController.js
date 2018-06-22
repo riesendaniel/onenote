@@ -2,7 +2,7 @@ const notesStore = require("../services/notesStorage");
 
 class NotesController {
     async getNotes(req, res) {
-        res.json((await notesStore.all(req.query.filter) || []))
+        res.json((await notesStore.all(req.query.filter, req.query.sort) || []))
     }
 
     async getNoteById(req, res) {

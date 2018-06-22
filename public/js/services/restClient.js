@@ -2,8 +2,8 @@
 
     const ajaxUtil = window.util.ajax;
 
-    function getNotes(filter) {
-        return ajaxUtil.ajax("GET", "/notes?filter="+ filter, undefined, undefined);
+    function getNotes(filter, sort) {
+        return ajaxUtil.ajax("GET", "/notes?filter="+ filter+"&sort="+sort, undefined, undefined);
     }
 
     function getNoteById(id) {

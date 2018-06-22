@@ -17,9 +17,9 @@
         }
 
         function sortFilter(event) {
-            //const sort = document.getElementById("finishDate").checked ? 1 : document.getElementById("createDate").checked ? 2 : 3;
+            const sort = document.getElementById("finishDate").checked ? 1 : document.getElementById("createDate").checked ? 2 : 3;
             const showFinished = document.getElementById("showFinished").checked;
-            renderNotes(getNotes(showFinished));
+            renderNotes(getNotes(showFinished, sort));
         }
 
         function renderNotes(notes) {
@@ -44,9 +44,9 @@
             }
         }
 
-        function getNotes(filter)
+        function getNotes(filter, sort)
         {
-            client.getNotes(filter).done(function(notes){
+            client.getNotes(filter, sort ? sort : 0).done(function(notes){
                 renderNotes(notes);
             })
         }
