@@ -5,11 +5,11 @@ const indexRoutes = require('./routes/indexRoutes');
 
 const app = express();
 
-app.use(require('./routes/indexRoutes.js'));
-app.use(express.static(__dirname + '/public'));
-
+//app.use(require('./routes/indexRoutes.js'));
+//app.use(express.static(__dirname + '/public'));
 app.use(express.static(path.resolve('public')));
-app.use(bodyParser.urlencoded({ extended: false }));
+
+//app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", function(req, res){
@@ -17,7 +17,6 @@ app.get("/", function(req, res){
 });
 
 app.use("/", indexRoutes);
-
 
 const hostname = '127.0.0.1';
 const port = 3001;

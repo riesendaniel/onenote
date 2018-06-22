@@ -6,7 +6,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-<form class="createNoteForm" action="index.html">
+<form id="createContainer" class="createNoteForm" action="index.html">
     <div class="row">
         <div class="column">
             <div class="input-group">
@@ -35,17 +35,19 @@
         </div>
     </div>
     <div class="row">
-        <button id="submit" type="submit">Speichern</button>
+        <button id="submit" class="submit" type="submit">Speichern</button>
     </div>
     <div class="row">
         <button id="cancel" formnovalidate>Cancel</button>
     </div>
 </form>
-<script src="js/libs/handlebars-v4.0.5.js"></script>
 <script src="js/libs/jquery-2.1.4.min.js"></script>
-<script src="js/utils/handlebarsHelpers.js"></script>
-<script src="js/controllers/createController.js"></script>
-<script src="../services/notesStorage.js"></script>
 <script src="js/utils/shared.js"></script>
+<script src="js/utils/ajaxUtil.js"></script>
+<script src="js/services/restClient.js"></script>
+<script src="js/controllers/createController.js"></script>
+
+<script src="js/libs/handlebars-v4.0.5.js"></script>
+<script src="js/utils/handlebarsHelpers.js"></script>
 </body>
 </html>

@@ -1,16 +1,28 @@
 const Datastore = require('nedb-promise');
-const db = new Datastore({ filename: './data/notes.db', autoload: true });
+const db = new Datastore({filename: './data/notes.db', autoload: true});
 
 getNotes().then((r) => {
     console.log(r);
 });
 
-async function getNotes()
-{
+async function getNotes() {
     return await db.find({});
 }
 
-module.exports = {all : getNotes};
+async function getNoteById(id) {
+    return await db.findOne({_id: id});
+}
+
+async function updateNote(id, title, description, rating, erledigtbis) {
+    return await db.update({_id: id}, {$set: {"title": title, "description": description, "rating": rating, "erledigtbis": erledigtbis}});
+}
+
+async function addNote(title, status, description, rating, erledigtBis) {
+    const note = JSON.parse('{"title": "' + title + '", "status": "' + status + '", "created": "' + new Date() + '", "finished": "' + null + '", "description": "' + description + '", "rating": ' + rating + ', "erledigtbis": "' + erledigtBis + '"}');
+    return await db.insert(note);
+}
+
+module.exports = {all: getNotes, byId: getNoteById, add: addNote, update: updateNote};
 
 
 //console.log(db);

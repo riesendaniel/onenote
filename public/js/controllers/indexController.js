@@ -7,10 +7,12 @@
         }
 
         function sendButtonEditEvent(event) {
-            const note = getNoteById(event.currentTarget.dataset.value);
-            if(note.status === "offen"){
-                window.location.replace("createNote.html?id=" + note.id);
-            }
+            client.getNoteById(event.currentTarget.dataset.value).done(function(note){
+                if(note.status === "offen"){
+                    window.location.replace("createNote.html?id=" + note._id);
+                }
+                renderNotes(getNotes());
+            })
         }
 
         function sortFilter(event) {

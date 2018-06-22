@@ -45,7 +45,7 @@
             {{#each notes}}
                 <li>
                     {{#ifCond  status '===' 'offen'}}
-                    <a id="editNote" name="editNote" data-value="{{id}}">
+                    <a id="editNote" name="editNote" data-value="{{_id}}">
                         {{else}}
                     <a>
                     {{/ifCond}}
@@ -58,13 +58,14 @@
         </ul>
     </script>
 </div>
-<script src="js/libs/handlebars-v4.0.5.js"></script>
 <script src="js/libs/jquery-2.1.4.min.js"></script>
-<script src="js/utils/handlebarsHelpers.js"></script>
 <script src="js/utils/shared.js"></script>
-<script src="js/controllers/indexController.js"></script>
-<script src="js/services/restClient.js"></script>
 <script src="js/utils/ajaxUtil.js"></script>
+<script src="js/services/restClient.js"></script>
+<script src="js/controllers/indexController.js"></script>
+
+<script src="js/libs/handlebars-v4.0.5.js"></script>
+<script src="js/utils/handlebarsHelpers.js"></script>
 
 </body>
 </html>
