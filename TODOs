@@ -1,0 +1,11 @@
+Prio 1 (MUSS):
+- Sort
+- CSS aufräumen
+- Refactoring Code JS
+- event data anstatt document.getElement
+- Console.log und sonstige console Fehler bereinigen
+- Kein Kommentar vorhanden
+- keine unnötigen Klassen & ID's (Elemente über Struktur/Name selektieren)
+
+Prio 2 (KANN):
+- Color wird nicht gehalten
