@@ -10,17 +10,17 @@
         const createContainer = $("#createContainer");
 
         $(createContainer).on("click", ".submit", function () {
-            const id = document.getElementById("noteID").value;
+            const id = $('#noteID').val();
             const star = $('input[name=radios]:checked').val() ? $('input[name=radios]:checked').val() : 1;
 
-            if (id && document.getElementById("title").checkValidity() && document.getElementById("description").checkValidity() && document.getElementById("datePicker").checkValidity()) {
-                client.updateNote(id, document.getElementById("title").value, document.getElementById("description").value, star, document.getElementById("datePicker").value).done(function () {
+            if (id && $('#title')[0].checkValidity() && $('#description')[0].checkValidity() && $('#datePicker')[0].checkValidity()) {
+                client.updateNote(id, $('#title').val(), $('#description').val(), star, $('#datePicker').val()).done(function () {
                     window.location.replace("index.html");
                 }).fail(function (msg) {
                     alert(msg);
                 });
-            } else if (document.getElementById("title").checkValidity() && document.getElementById("description").checkValidity() && document.getElementById("datePicker").checkValidity()) {
-                client.addNote(document.getElementById("title").value, "offen", document.getElementById("description").value, star, document.getElementById("datePicker").value).done(function () {
+            } else if ($('#title')[0].checkValidity() && $('#description')[0].checkValidity() && $('#datePicker')[0].checkValidity()) {
+                client.addNote($('#title').val(), "offen", $('#description').val(), star, $('#datePicker').val()).done(function () {
                     window.location.replace("index.html");
                 }).fail(function (msg) {
                     alert(msg);
