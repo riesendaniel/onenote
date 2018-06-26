@@ -16,13 +16,13 @@
                 client.updateNote(id, document.getElementById("title").value, document.getElementById("description").value, star, document.getElementById("datePicker").value).done(function () {
                     window.location.replace("index.html");
                 }).fail(function (msg) {
-                    console.log(msg);
+                    alert(msg);
                 });
             } else if (document.getElementById("title").checkValidity() && document.getElementById("description").checkValidity() && document.getElementById("datePicker").checkValidity()) {
                 client.addNote(document.getElementById("title").value, "offen", document.getElementById("description").value, star, document.getElementById("datePicker").value).done(function () {
                     window.location.replace("index.html");
                 }).fail(function (msg) {
-                    console.log(msg);
+                    alert(msg);
                 });
             }
         });
@@ -36,7 +36,9 @@
                     document.getElementById("star" + note.rating).checked = true;
                     document.getElementById("datePicker").value = note.erledigtbis;
                     document.getElementById("noteID").value = note._id;
-                })
+                }).fail(function (msg) {
+                    alert(msg);
+                });
             }
         }
     });

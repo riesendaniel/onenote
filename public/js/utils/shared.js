@@ -10,3 +10,12 @@ function changeColor(form_element) {
     sessionStorage.setItem("color", JSON.stringify(form_element.value));
     document.body.style.backgroundColor = form_element.value;
 }
+
+if (document.getElementById("colorSelector")) {
+    let colors = document.getElementsByName("color");
+    for (let curColor of Array.from(colors)) {
+        if (color === curColor.value) {
+            curColor.selected = true;
+        }
+    }
+}

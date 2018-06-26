@@ -1,9 +1,9 @@
-;(function (services, $) {
+;(function (services) {
 
     const ajaxUtil = window.util.ajax;
 
     function getNotes(filter, sort) {
-        return ajaxUtil.ajax("GET", "/notes?filter="+ filter+"&sort="+sort, undefined, undefined);
+        return ajaxUtil.ajax("GET", "/notes?filter=" + filter + "&sort=" + sort, undefined, undefined);
     }
 
     function getNoteById(id) {

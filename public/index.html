@@ -13,12 +13,10 @@
         </form>
     </div>
     <div id="header4">
-        <form>
-            <select onchange="changeColor(this)">
-                <option value="white">Style: white</option>
-                <option value="beige">Style: beige</option>
-            </select>
-        </form>
+        <select id="colorSelector" onchange="changeColor(this)">
+            <option name="color" value="white">Style: white</option>
+            <option name="color" value="beige">Style: beige</option>
+        </select>
     </div>
     <div id="menu1">
         <fieldset id="sort" class="sort">
@@ -40,17 +38,18 @@
     <script id="notes-template" type="text/x-handlebars-template">
         <ul id="notes">
             {{#each notes}}
-                <li>
-                    {{#ifCond  status '===' 'offen'}}
-                    <a id="editNote" name="editNote" data-value="{{_id}}">
-                        {{else}}
+            <li>
+                {{#ifCond status '===' 'offen'}}
+                <a id="editNote" name="editNote" data-value="{{_id}}">
+                    {{else}}
                     <a>
-                    {{/ifCond}}
+                        {{/ifCond}}
                         <h2>{{title}} {{formatRating rating}}</h2>
                         <p>{{description}}</p>
-                        <input id="checkBoxNote" {{checkedIfStatus status}} name="checkBoxNote" data-value="{{_id}}" type="checkbox"> finished ( {{erledigtbis}} )
+                        <input id="checkBoxNote" {{checkedIfStatus status}} name="checkBoxNote" data-value="{{_id}}"
+                               type="checkbox"> finished ( {{erledigtbis}} )
                     </a>
-                </li>
+            </li>
             {{/each}}
         </ul>
     </script>
