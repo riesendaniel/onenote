@@ -10,7 +10,7 @@
 * node ^10.2.1
 * npm ^5.6.0
 
-##Installation
+## Installation
 
 When that's done, install the project dependencies. 
 Install project dependencies (`npm install`)

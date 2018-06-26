@@ -21,8 +21,8 @@
         }
 
         function sortFilter() {
-            const sort = document.getElementById("finishDate").checked ? 1 : document.getElementById("createDate").checked ? 2 : 3;
-            const showFinished = document.getElementById("showFinished").checked;
+            const sort = $('input[name=sort]:checked').val();
+            const showFinished = $("#showFinished")[0].checked;
             renderNotes(getNotes(showFinished, sort));
         }
 
