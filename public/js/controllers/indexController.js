@@ -4,8 +4,6 @@
         function changeStatus(event) {
             client.changeStatus(event.currentTarget.dataset.value).done(function () {
                 renderNotes(getNotes());
-            }).fail(function (msg) {
-                alert(msg);
             });
         }
 
